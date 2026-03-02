@@ -93,7 +93,7 @@
 
         /* ── HERO ── */
         .hero {
-            min-height: 100vh;
+            min-height: 60vh;
             position: relative;
             display: flex; align-items: center;
             padding: 100px 5% 80px;
@@ -669,6 +669,18 @@
         @media (max-width: 640px) { .slide { height: 280px; } .slider-btn { width: 38px; height: 38px; font-size: 1.3rem; } }
         @media (max-width: 960px) { .slide { height: 380px; } }
 
+        
+        /* Hero two-column layout */
+        .hero-inner { display: flex; align-items: center; justify-content: space-between; gap: 40px; width: 100%; position: relative; z-index: 1; padding-right: 0; }
+        .hero-right { margin-right: -2%; }
+        .hero-left { flex: 1; max-width: 600px; }
+        .hero-right { display: flex; flex-direction: column; gap: 16px; min-width: 180px; }
+        .hero-stat-card { background: rgba(255,255,255,0.07); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 20px 28px; text-align: center; transition: transform 0.3s, background 0.3s; }
+        .hero-stat-card:hover { transform: scale(1.05); background: rgba(255,255,255,0.12); }
+        .hero-stat-card strong { display: block; font-size: 2rem; font-weight: 900; background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1.1; }
+        .hero-stat-card span { font-size: 0.78rem; color: rgba(255,255,255,0.6); font-weight: 500; margin-top: 4px; display: block; }
+        @media (max-width: 768px) { .hero-inner { flex-direction: column; } .hero-right { flex-direction: row; justify-content: center; flex-wrap: wrap; } .hero-stat-card { min-width: 120px; } }
+
         </style>
 </head>
 <body>
@@ -706,30 +718,32 @@
         <div class="orb orb-3"></div>
     </div>
     <div class="hero-inner">
-        <div class="hero-pill">
-            <span class="pill-dot"></span>
-            Profesionálne strešné práce na Slovensku
+        <div class="hero-left">
+            <div class="hero-pill">
+                <span class="pill-dot"></span>
+                Profesionálne strešné práce na Slovensku
+            </div>
+            <h1>
+                <span class="line">Kvalitné strechy,</span>
+                <span class="line accent-word">ktoré vydržia generácie</span>
+            </h1>
+            <p>Sme experti na šikmé aj ploché strechy. Poskytujeme komplexné služby od návrhu, cez realizáciu až po rekonštrukcie a opravy.</p>
+            <div class="hero-actions">
+                <a href="#kontakt" class="btn-glow">🏠 Získať cenovú ponuku</a>
+                <a href="#sluzby" class="btn-ghost">Naše služby →</a>
+            </div>
         </div>
-        <h1>
-            <span class="line">Kvalitné strechy,</span>
-            <span class="line accent-word">ktoré vydržia generácie</span>
-        </h1>
-        <p>Sme experti na šikmé aj ploché strechy. Poskytujeme komplexné služby od návrhu, cez realizáciu až po rekonštrukcie a opravy.</p>
-        <div class="hero-actions">
-            <a href="#kontakt" class="btn-glow">🏠 Získať cenovú ponuku</a>
-            <a href="#sluzby" class="btn-ghost">Naše služby →</a>
-        </div>
-        <div class="hero-stats-row">
-            <div class="hero-stat">
-                <strong>250+</strong>
+        <div class="hero-right">
+            <div class="hero-stat-card">
+                <strong data-count="250">250+</strong>
                 <span>Spokojných zákazníkov</span>
             </div>
-            <div class="hero-stat">
-                <strong>200+</strong>
+            <div class="hero-stat-card">
+                <strong data-count="200">200+</strong>
                 <span>Zrealizovaných striech</span>
             </div>
-            <div class="hero-stat">
-                <strong>7+</strong>
+            <div class="hero-stat-card">
+                <strong data-count="7">7+</strong>
                 <span>Rokov skúseností</span>
             </div>
         </div>
@@ -1237,11 +1251,11 @@
 
     // ── COUNTER ANIMATION ──
     let counterDone = false;
-    window.addEventListener('scroll', function() {
+    function runCounters() {
         if (counterDone) return;
-        var row = document.querySelector('.hero-stats-row');
+        var row = document.querySelector('.hero-right');
         if (!row) return;
-        if (row.getBoundingClientRect().top < window.innerHeight * 0.75) {
+        if (row.getBoundingClientRect().top < window.innerHeight * 0.95) {
             counterDone = true;
             var targets = [250, 200, 7];
             var els = row.querySelectorAll('strong');
@@ -1261,7 +1275,9 @@
                 }, 20);
             });
         }
-    });
+    }
+    window.addEventListener('scroll', runCounters);
+    window.addEventListener('load', runCounters);
 
 
     // ── SLIDER ──
