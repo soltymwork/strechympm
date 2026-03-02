@@ -520,6 +520,8 @@
         .g-item.tall { grid-row: span 2; }
         .g-item.hide { display: none; }
         .g-item:hover { transform: scale(1.03); box-shadow: 0 20px 50px rgba(0,0,0,0.5); z-index: 2; }
+        .g-item img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .g-item:hover img { transform: scale(1.08); }
         /* Placeholder image via SVG pattern */
         .g-item .g-bg {
             position: absolute; inset: 0;
@@ -907,99 +909,8 @@
 
     <!-- GRID -->
     <div class="gallery-grid" data-reveal="up">
-        <div class="g-item wide" data-cat="strecha" data-title="Rekonštrukcia sedlovej strechy" data-loc="Nové Zámky, 2024">
-            <div class="g-bg" style="--gbg: linear-gradient(135deg, #0d3b6e, #5a3b28, #2a7abf)"></div>
-            <div class="g-emoji">🏠</div>
-            <div class="g-zoom">🪛</div>
-            <div class="g-overlay">
-                <div class="g-tag">Strecha</div>
-                <h4>Rekonštrukcia sedlovej strechy</h4>
-                <span>📍 Nové Zámky, 2024</span>
-            </div>
-        </div>
-        <div class="g-item tall" data-cat="krov" data-title="Montáž krovu – rodinný dom" data-loc="Levice, 2024">
-            <div class="g-bg" style="--gbg: linear-gradient(145deg, #1e2d4a, #2d4a7a, #3d6599)"></div>
-            <div class="g-emoji">🏠</div>
-            <div class="g-zoom">🪛</div>
-            <div class="g-overlay">
-                <div class="g-tag">Krov</div>
-                <h4>Montáž krovu – rodinný dom</h4>
-                <span>📍 Levice, 2024</span>
-            </div>
-        </div>
-        <div class="g-item" data-cat="klampiar" data-title="Odkvapový systém" data-loc="Nitra, 2025">
-            <div class="g-bg" style="--gbg: linear-gradient(135deg, #2a1a0a, #7a4010, #c06020)"></div>
-            <div class="g-emoji">🔩</div>
-            <div class="g-zoom">🪛</div>
-            <div class="g-overlay">
-                <div class="g-tag">Klampiarske práce</div>
-                <h4>Odkvapový systém</h4>
-                <span>📍 Nitra, 2025</span>
-            </div>
-        </div>
-        <div class="g-item" data-cat="strecha" data-title="TPO hydroizolácia plochej strechy" data-loc="Šaľa, 2025">
-            <div class="g-bg" style="--gbg: linear-gradient(135deg, #1a2f1f, #15503a, #4a5a3f)"></div>
-            <div class="g-emoji">🌊</div>
-            <div class="g-zoom">🪛</div>
-            <div class="g-overlay">
-                <div class="g-tag">Hydroizolácia</div>
-                <h4>TPO hydroizolácia plochej strechy</h4>
-                <span>📍 Šaľa, 2025</span>
-            </div>
-        </div>
-        <div class="g-item wide" data-cat="altanok" data-title="Drevený záhradný altánok" data-loc="Komárno, 2025">
-            <div class="g-bg" style="--gbg: linear-gradient(135deg, #2a1a05, #6b3d10, #a05c1a)"></div>
-            <div class="g-emoji">🌲</div>
-            <div class="g-zoom">🪛</div>
-            <div class="g-overlay">
-                <div class="g-tag">Altánok</div>
-                <h4>Drevený záhradný altánok</h4>
-                <span>📍 Komárno, 2025</span>
-            </div>
-        </div>
-        <div class="g-item" data-cat="krov" data-title="Krovová konštrukcia s vikiermi" data-loc="Zlaté Moravce, 2024">
-            <div class="g-bg" style="--gbg: linear-gradient(135deg, #2a1a15, #3d1a6b, #6a4a30)"></div>
-            <div class="g-emoji">🏠</div>
-            <div class="g-zoom">🪛</div>
-            <div class="g-overlay">
-                <div class="g-tag">Krov</div>
-                <h4>Krovová konštrukcia s vikiermi</h4>
-                <span>📍 Zlaté Moravce, 2024</span>
-            </div>
-        </div>
-        <div class="g-item" data-cat="klampiar" data-title="Oplechovanie komína" data-loc="Nové Zámky, 2025">
-            <div class="g-bg" style="--gbg: linear-gradient(135deg, #3a3a3a, #3d3d3d, #606060)"></div>
-            <div class="g-emoji">🔩</div>
-            <div class="g-zoom">🪛</div>
-            <div class="g-overlay">
-                <div class="g-tag">Klampiarske práce</div>
-                <h4>Oplechovanie komína</h4>
-                <span>📍 Nové Zámky, 2025</span>
-            </div>
-        </div>
-        <div class="g-item" data-cat="altanok" data-title="Carport – prístrešok pre auto" data-loc="Bratislava, 2025">
-            <div class="g-bg" style="--gbg: linear-gradient(135deg, #0a1e2e, #1a4560, #6a4a30)"></div>
-            <div class="g-emoji">🚗</div>
-            <div class="g-zoom">🪛</div>
-            <div class="g-overlay">
-                <div class="g-tag">Prístrešok</div>
-                <h4>Carport – prístrešok pre auto</h4>
-                <span>📍 Bratislava, 2025</span>
-            </div>
-        </div>
-        <div class="g-item wide" data-cat="strecha" data-title="Kompletná výmena strešnej krytiny" data-loc="Trnava, 2025">
-            <div class="g-bg" style="--gbg: linear-gradient(135deg, #1a0a0a, #5c1a1a, #8e2020)"></div>
-            <div class="g-emoji">🏠</div>
-            <div class="g-zoom">🪛</div>
-            <div class="g-overlay">
-                <div class="g-tag">Strecha</div>
-                <h4>Kompletná výmena strešnej krytiny</h4>
-                <span>📍 Trnava, 2025</span>
-            </div>
-        </div>
-
         <div class="g-item wide" data-cat="strecha" data-title="Rekonštrukcia strechy – taška + odkvap" data-loc="Nitriansky kraj, 2024">
-            <img src="20240528_164403_IMG_0052.jpg" style="width:100%;height:100%;object-fit:cover;">
+            <img src="20240528_164403_IMG_0052.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;">
             <div class="g-overlay">
                 <div class="g-tag">Strecha</div>
                 <h4>Rekonštrukcia strechy – taška + odkvap</h4>
@@ -1007,7 +918,7 @@
             </div>
         </div>
         <div class="g-item" data-cat="klampiar" data-title="Odkvapový systém – medené žľaby" data-loc="Nitriansky kraj, 2024">
-            <img src="20240607_081449_IMG_0094.jpg" style="width:100%;height:100%;object-fit:cover;">
+            <img src="20240607_081449_IMG_0094.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;">
             <div class="g-overlay">
                 <div class="g-tag">Klampiarske práce</div>
                 <h4>Odkvapový systém – medené žľaby</h4>
@@ -1015,7 +926,7 @@
             </div>
         </div>
         <div class="g-item tall" data-cat="strecha" data-title="Montáž plechovej strechy" data-loc="Nitriansky kraj, 2024">
-            <img src="20240710_110155_IMG_0212.jpg" style="width:100%;height:100%;object-fit:cover;">
+            <img src="20240710_110155_IMG_0212.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;">
             <div class="g-overlay">
                 <div class="g-tag">Strecha</div>
                 <h4>Montáž plechovej strechy</h4>
@@ -1023,7 +934,7 @@
             </div>
         </div>
         <div class="g-item" data-cat="klampiar" data-title="Odkvapový systém – tmavé žľaby" data-loc="Nitriansky kraj, 2024">
-            <img src="20240726_141045_IMG_0294.jpg" style="width:100%;height:100%;object-fit:cover;">
+            <img src="20240726_141045_IMG_0294.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;">
             <div class="g-overlay">
                 <div class="g-tag">Klampiarske práce</div>
                 <h4>Odkvapový systém – tmavé žľaby</h4>
@@ -1031,7 +942,7 @@
             </div>
         </div>
         <div class="g-item wide" data-cat="krov" data-title="Drevená krovová konštrukcia – prístrešok" data-loc="Nitriansky kraj, 2024">
-            <img src="20240801_150458_IMG_0315.jpg" style="width:100%;height:100%;object-fit:cover;">
+            <img src="20240801_150458_IMG_0315.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;">
             <div class="g-overlay">
                 <div class="g-tag">Krov</div>
                 <h4>Drevená krovová konštrukcia – prístrešok</h4>
@@ -1039,7 +950,7 @@
             </div>
         </div>
         <div class="g-item" data-cat="strecha" data-title="Rekonštrukcia – montáž tmavej škridly" data-loc="Nitriansky kraj, 2024">
-            <img src="20240806_131734_IMG_0333.jpg" style="width:100%;height:100%;object-fit:cover;">
+            <img src="20240806_131734_IMG_0333.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;">
             <div class="g-overlay">
                 <div class="g-tag">Strecha</div>
                 <h4>Rekonštrukcia – montáž tmavej škridly</h4>
@@ -1047,7 +958,7 @@
             </div>
         </div>
         <div class="g-item" data-cat="strecha" data-title="Rekonštrukcia strechy – prebieha montáž" data-loc="Nitriansky kraj, 2024">
-            <img src="20241011_150715_IMG_0499.jpg" style="width:100%;height:100%;object-fit:cover;">
+            <img src="20241011_150715_IMG_0499.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;">
             <div class="g-overlay">
                 <div class="g-tag">Strecha</div>
                 <h4>Rekonštrukcia strechy – prebieha montáž</h4>
@@ -1055,7 +966,7 @@
             </div>
         </div>
         <div class="g-item tall" data-cat="altanok" data-title="Drevená pergola – konštrukcia prístrešku" data-loc="Nitriansky kraj, 2024">
-            <img src="20241011_150534_IMG_0498.jpg" style="width:100%;height:100%;object-fit:cover;">
+            <img src="20241011_150534_IMG_0498.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;">
             <div class="g-overlay">
                 <div class="g-tag">Altánok</div>
                 <h4>Drevená pergola – konštrukcia prístrešku</h4>
@@ -1063,7 +974,7 @@
             </div>
         </div>
         <div class="g-item wide" data-cat="strecha" data-title="Nová tmavohnedá škridla – rodinný dom" data-loc="Nitriansky kraj, 2024">
-            <img src="20241026_110711_IMG_0556.jpg" style="width:100%;height:100%;object-fit:cover;">
+            <img src="20241026_110711_IMG_0556.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;">
             <div class="g-overlay">
                 <div class="g-tag">Strecha</div>
                 <h4>Nová tmavohnedá škridla – rodinný dom</h4>
@@ -1071,14 +982,14 @@
             </div>
         </div>
         <div class="g-item" data-cat="strecha" data-title="Červená škridla + klampiarsky vikier" data-loc="Nitriansky kraj, 2024">
-            <img src="20241028_162413_IMG_0569.jpg" style="width:100%;height:100%;object-fit:cover;">
+            <img src="20241028_162413_IMG_0569.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;">
             <div class="g-overlay">
                 <div class="g-tag">Strecha</div>
                 <h4>Červená škridla + klampiarsky vikier</h4>
                 <span>Nitriansky kraj, 2024</span>
             </div>
         </div>
-    </div>
+    
 </section>
 
 <!-- LIGHTBOX -->
@@ -1221,28 +1132,19 @@
         });
     });
 
-    // Btn send – mailto
+    // Btn send ripple
     document.querySelector('.btn-send').addEventListener('click', function () {
         const meno = document.querySelector('.cform input[placeholder="Vaše meno"]')?.value || '';
         const telefon = document.querySelector('.cform input[placeholder="Telefón"]')?.value || '';
         const email = document.querySelector('.cform input[placeholder="E-mailová adresa"]')?.value || '';
         const sluzba = document.querySelector('.cform select')?.value || '';
         const sprava = document.querySelector('.cform textarea')?.value || '';
-
         if (!meno && !telefon && !email && !sprava) {
             alert('Prosím, vyplňte aspoň jedno pole pred odoslaním.');
             return;
         }
-
         const subject = encodeURIComponent('Nový dopyt z webu – ' + (sluzba || 'Strechy MPM'));
-        const body = encodeURIComponent(
-            'Meno: ' + meno + '\n' +
-            'Telefón: ' + telefon + '\n' +
-            'E-mail: ' + email + '\n' +
-            'Typ služby: ' + sluzba + '\n\n' +
-            'Správa:\n' + sprava
-        );
-
+        const body = encodeURIComponent('Meno: ' + meno + '\n' + 'Telefón: ' + telefon + '\n' + 'E-mail: ' + email + '\n' + 'Typ služby: ' + sluzba + '\n\nSpráva:\n' + sprava);
         window.location.href = 'mailto:strechympm@gmail.com?subject=' + subject + '&body=' + body;
     });
 
@@ -1286,10 +1188,20 @@
     function updateLb() {
         const item = visibleItems[currentIdx];
         if (!item) return;
-        const bg = item.querySelector('.g-bg').style.getPropertyValue('--gbg') || 'linear-gradient(135deg,#4a2c1a,#6a4a30)';
-        const emoji = item.querySelector('.g-emoji').textContent;
-        lbImg.style.background = bg;
-        lbEmoji.textContent = emoji;
+        const imgEl = item.querySelector('img');
+        if (imgEl) {
+            lbImg.style.background = '#1a1a1a';
+            lbEmoji.textContent = '';
+            let lbRealImg = lbImg.querySelector('img');
+            if (!lbRealImg) { lbRealImg = document.createElement('img'); lbRealImg.style.cssText = 'width:100%;height:100%;object-fit:cover;border-radius:16px;position:absolute;inset:0;'; lbImg.appendChild(lbRealImg); }
+            lbRealImg.src = imgEl.src;
+        } else {
+            const bg = item.querySelector('.g-bg') ? item.querySelector('.g-bg').style.getPropertyValue('--gbg') : 'linear-gradient(135deg,#4a2c1a,#6a4a30)';
+            const emoji = item.querySelector('.g-emoji') ? item.querySelector('.g-emoji').textContent : '';
+            lbImg.style.background = bg;
+            lbEmoji.textContent = emoji;
+            const lbRealImg = lbImg.querySelector('img'); if (lbRealImg) lbRealImg.remove();
+        }
         lbTitle.textContent = item.dataset.title;
         lbLoc.textContent = item.dataset.loc;
         lbCounter.textContent = (currentIdx + 1) + ' / ' + visibleItems.length;
