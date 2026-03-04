@@ -397,7 +397,20 @@
             border-right: 1px solid rgba(255,255,255,0.07);
             transition: background 0.35s;
         }
-        .process-step:last-child { border-right: none; }
+        
+        /* Process steps: sequential pop-in (uses existing transition-delay as animation-delay via JS) */
+        @keyframes stepPopIn {
+            0% { opacity: 0; transform: translateY(35px) scale(0.96); }
+            60% { opacity: 1; transform: translateY(0) scale(1.02); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .process-step.in {
+            animation: stepPopIn 0.6s cubic-bezier(0.34,1.56,0.64,1) both;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .process-step.in { animation: none !important; }
+        }
+.process-step:last-child { border-right: none; }
         .process-step:hover { background: rgba(255,255,255,0.04); }
         .step-num {
             display: inline-flex; align-items: center; justify-content: center;
@@ -1213,6 +1226,13 @@
         });
     }, { threshold: 0.1 });
     reveals.forEach(el => io.observe(el));
+
+    // Process steps: use transition-delay values as animation-delay so steps pop in 1→5
+    document.querySelectorAll('.process-step').forEach((step) => {
+        const td = getComputedStyle(step).transitionDelay;
+        if (td && td !== '0s') step.style.animationDelay = td;
+    });
+
 
     // Active nav highlight on scroll
     const sections = document.querySelectorAll('section[id]');
