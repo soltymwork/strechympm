@@ -54,11 +54,23 @@
             padding: 0 5%;
             background: transparent;
             transition: background 0.4s, box-shadow 0.4s, backdrop-filter 0.4s;
+        
+            top: env(safe-area-inset-top, 0px);
+            padding-top: env(safe-area-inset-top, 0px);
+            height: calc(68px + env(safe-area-inset-top, 0px));
+
+            transform: translate3d(0,0,0);
+            -webkit-transform: translate3d(0,0,0);
+            will-change: transform;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
         }
         nav.solid {
             background: rgba(9, 20, 35, 0.92);
             backdrop-filter: blur(20px);
             box-shadow: 0 1px 30px rgba(0,0,0,0.5);
+        
+            -webkit-backdrop-filter: blur(20px);
         }
         .logo { display: flex; align-items: center; gap: 11px; text-decoration: none; }
         .logo-box {
@@ -1105,11 +1117,23 @@
         glow.style.top = e.clientY + 'px';
     });
 
-    // Navbar solid on scroll + active link
+    // Navbar solid on scroll (mobile-safe)
     const navEl = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
+
+    function onNavScroll(){
+        if (!navEl) return;
         navEl.classList.toggle('solid', window.scrollY > 40);
-    });
+    }
+
+    window.addEventListener('scroll', onNavScroll, { passive: true });
+    window.addEventListener('load', onNavScroll);
+    window.addEventListener('resize', onNavScroll);
+
+    // Mobile viewport changes (iOS/Chrome address bar)
+    if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', onNavScroll);
+        window.visualViewport.addEventListener('scroll', onNavScroll);
+    }
 
     // Hamburger
     function toggleNav() {
