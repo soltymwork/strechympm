@@ -1202,6 +1202,78 @@
         step.style.animationDelay = (sec * factor + base) + 's';
     });
 
+    // Gallery image fallback (case/path retry)
+    (function() {
+        const track = document.getElementById('sliderTrack');
+        if (!track) return;
+
+        const images = track.querySelectorAll('img');
+        if (!images.length) return;
+
+        const uniq = (arr) => Array.from(new Set(arr.filter(Boolean)));
+
+        const candidatesFor = (src) => {
+            if (!src) return [];
+            const clean = src.split('?')[0].split('#')[0];
+            const parts = clean.split('/');
+            const file = parts[parts.length - 1];
+            const baseDirs = uniq([
+                './assets/',
+                'assets/',
+                '/assets/',
+                './assets/galeria/',
+                './assets/gallery/',
+                'assets/galeria/',
+                'assets/gallery/',
+                '/assets/galeria/',
+                '/assets/gallery/'
+            ]);
+
+            const variants = [clean];
+            const swapExt = (s, a, b) => s.endsWith(a) ? s.slice(0, -a.length) + b : s;
+
+            // Case variants for common image extensions
+            variants.push(swapExt(clean, '.JPG', '.jpg'));
+            variants.push(swapExt(clean, '.jpg', '.JPG'));
+            variants.push(swapExt(clean, '.JPEG', '.jpeg'));
+            variants.push(swapExt(clean, '.jpeg', '.JPEG'));
+            variants.push(swapExt(clean, '.PNG', '.png'));
+            variants.push(swapExt(clean, '.png', '.PNG'));
+            variants.push(swapExt(clean, '.WEBP', '.webp'));
+            variants.push(swapExt(clean, '.webp', '.WEBP'));
+
+            // If it's a bare filename, also try in assets dirs
+            if (!clean.includes('/')) {
+                baseDirs.forEach(d => variants.push(d + clean));
+            }
+
+            // If it already points to assets, also try alternate dirs with just filename
+            if (clean.includes('assets/')) {
+                baseDirs.forEach(d => variants.push(d + file));
+            }
+
+            return uniq(variants);
+        };
+
+        images.forEach((img) => {
+            img.addEventListener('error', () => {
+                const tried = parseInt(img.dataset.retryTried || '0', 10);
+                if (tried >= 6) return;
+
+                const last = img.currentSrc || img.src;
+                const cands = candidatesFor(img.dataset.retryOrig || img.src);
+                if (!img.dataset.retryOrig) img.dataset.retryOrig = img.src;
+
+                const next = cands.find(c => c && c !== last);
+                if (!next) return;
+
+                img.dataset.retryTried = String(tried + 1);
+                img.src = next;
+            }, { passive: true });
+        });
+    })();
+
+
 
     // Active nav highlight on scroll
     const sections = document.querySelectorAll('section[id]');
