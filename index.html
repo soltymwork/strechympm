@@ -1120,7 +1120,20 @@
     // Navbar solid on scroll (mobile-safe)
     const navEl = document.getElementById('nav');
 
+    // Android/Chrome: keep fixed nav aligned with visual viewport
+    function fixNavTop(){
+        if (!navEl || !window.visualViewport) return;
+        navEl.style.top = (window.visualViewport.offsetTop || 0) + 'px';
+    }
+    fixNavTop();
+    if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', fixNavTop);
+        window.visualViewport.addEventListener('scroll', fixNavTop);
+    }
+
+
     function onNavScroll(){
+        fixNavTop();
         if (!navEl) return;
         navEl.classList.toggle('solid', window.scrollY > 40);
     }
