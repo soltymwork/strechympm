@@ -66,6 +66,9 @@
 
         /* ── NAVBAR ── */
         nav {
+            -webkit-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+            will-change: transform;
             position: fixed; top: 0; left: 0; right: 0; z-index: 500;
             height: 68px;
             display: flex; align-items: center; justify-content: space-between;
@@ -79,6 +82,19 @@
             box-shadow: 0 1px 30px rgba(0,0,0,0.5);
         }
         .logo { display: flex; align-items: center; gap: 11px; text-decoration: none; }
+        /* Mobile/touch: disable cursor glow overlay (prevents nav issues on Android) */
+        @media (pointer: coarse) {
+            .cursor-glow { display: none !important; }
+        }
+
+        /* Some mobile browsers flicker/hide fixed elements with backdrop-filter */
+        @media (pointer: coarse) {
+            nav.solid {
+                -webkit-backdrop-filter: none !important;
+                backdrop-filter: none !important;
+            }
+        }
+
         .logo-box {
             width: 40px; height: 40px; border-radius: 10px;
             background: linear-gradient(135deg, var(--accent), var(--accent2));
