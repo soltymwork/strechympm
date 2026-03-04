@@ -378,7 +378,7 @@
             100% { opacity: 1; transform: translateY(0) scale(1); }
         }
         .process-step.in {
-            animation: stepPopIn 0.6s cubic-bezier(0.34,1.56,0.64,1) both;
+            animation: stepPopIn 0.95s cubic-bezier(0.34,1.56,0.64,1) both;
         }
         @media (prefers-reduced-motion: reduce) {
             .process-step.in { animation: none !important; }
@@ -1192,8 +1192,14 @@
 
     // Process steps: use transition-delay values as animation-delay so steps pop in 1→5
     document.querySelectorAll('.process-step').forEach((step) => {
-        const td = getComputedStyle(step).transitionDelay;
-        if (td && td !== '0s') step.style.animationDelay = td;
+        const tdRaw = getComputedStyle(step).transitionDelay || '0s';
+        const td = tdRaw.split(',')[0].trim();
+        const sec = td.endsWith('ms') ? (parseFloat(td) / 1000) : parseFloat(td);
+        if (!Number.isFinite(sec)) return;
+
+        const factor = 1.8;
+        const base = 0.10;
+        step.style.animationDelay = (sec * factor + base) + 's';
     });
 
 
